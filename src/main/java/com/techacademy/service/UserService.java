@@ -3,6 +3,7 @@ package com.techacademy.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.techacademy.entity.User;
 import com.techacademy.repository.UserRepository;
@@ -17,5 +18,10 @@ public class UserService {
     /**全件を検索して返す*/
     public List<User> getUserList(){
         return userRepository.findAll();
+    }
+    /** register user*/
+    @Transactional
+    public User saveUser(User user) {
+        return userRepository.save(user);
     }
 }
